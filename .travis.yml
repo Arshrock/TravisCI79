@@ -1,9 +1,19 @@
 language: node_js
 node_js:
   - "10.15.2"
+branches:
+  only:
+    - master
 script:
   - echo "Deploying"
 before_script:
   - npm i -g firebase-tools
+
+deploy:
+  skip_cleanup: true
+  provider: firebase
+  token:
+    secure: $FKEY
+
 after_success:
-  - firebase deploy --token $FKEY
+  - echo "Deployed"
