@@ -3,5 +3,7 @@ node_js:
   - "10.15.2"
 script:
   - echo "Deploying"
+before_script:
+  - npm i -g firebase-tools
 after_success:
   - firebase deploy --token $FKEY
